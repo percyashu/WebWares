@@ -2,6 +2,7 @@ package io.greenshell.webwares.data.persistence;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.greenshell.webwares.commons.persistence.BaseEntity;
+import io.greenshell.webwares.data.domain.OrderStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

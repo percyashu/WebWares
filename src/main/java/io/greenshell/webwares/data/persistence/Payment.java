@@ -1,6 +1,7 @@
 package io.greenshell.webwares.data.persistence;
 
 import io.greenshell.webwares.commons.persistence.BaseEntity;
+import io.greenshell.webwares.data.domain.PaymentStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

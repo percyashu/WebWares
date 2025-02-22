@@ -36,4 +36,7 @@ public class Customer extends BaseEntity {
     @OneToMany(mappedBy = "customer")
     @JsonIgnore
     private Set<Cart> carts;
+
+    @Column
+    private Boolean enabled;
 }
