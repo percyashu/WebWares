@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  webWaresData:
+    driver: local
+
+services:
+  web_wares_service_pg:
+    image: postgres:13.6-alpine
+    ports:
+      - 15432:5432
+    volumes:
+      - webWaresData:/var/lib/postgresql/data
+      - ./postgres/db-setup.sql:/docker-entrypoint-initdb.d/init-db.sql
+    environment:
+      POSTGRES_USER: seoeunhyun
+      POSTGRES_PASSWORD: soap101
