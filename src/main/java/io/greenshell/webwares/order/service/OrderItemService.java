@@ -23,7 +23,6 @@ public class OrderItemService {
 
     private final OrderItemRepository orderItemRepository;
     private final OrderRepository orderRepository;
-    private final ProductRepository productRepository;
 
     public List<OrderItemDto> findAll() {
         log.debug("Request to get all OrderItems");
@@ -47,18 +46,12 @@ public class OrderItemService {
                                 () ->
                                         new IllegalStateException("The Order does not exist!")
                         );
-        Product product =
-                this.productRepository.findById(orderItemDto.productId())
-                        .orElseThrow(
-                                () ->
-                                        new IllegalStateException("The Product does not exist!")
-                        );
 
         return mapToDto(
                 this.orderItemRepository.save(
                         new OrderItem(
                                 orderItemDto.quantity(),
-                                product,
+                                orderItemDto.productId(),
                                 order
                         )));
     }
@@ -73,7 +66,7 @@ public class OrderItemService {
             return new OrderItemDto(
                     orderItem.getId(),
                     orderItem.getQuantity(),
-                    orderItem.getProduct().getId(),
+                    orderItem.getProductId(),
                     orderItem.getOrder().getId()
             );
         }

@@ -1,8 +1,8 @@
 package io.greenshell.webwares.order.service;
 
+import io.greenshell.webwares.commons.domain.CartDto;
 import io.greenshell.webwares.commons.domain.OrderDto;
 import io.greenshell.webwares.commons.domain.OrderStatus;
-import io.greenshell.webwares.customer.data.Cart;
 import io.greenshell.webwares.order.data.Order;
 import io.greenshell.webwares.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,7 @@ public class OrderService {
         return this.orderRepository.findById(id).map(OrderService::mapToDto).orElse(null);
     }
     public List<OrderDto> findAllByUser(Long id) {
-        return this.orderRepository.findByCartCustomer_Id(id)
+        return this.orderRepository.findByCartId(id)
                 .stream()
                 .map(OrderService::mapToDto)
                 .collect(Collectors.toList());
@@ -56,8 +56,8 @@ public class OrderService {
                 )
         );
     }
-    public Order create(Cart cart) {
-        log.debug("Request to create Order with a Cart : {}", cart);
+    public Order create(CartDto cartDto) {
+        log.debug("Request to create Order with a Cart : {}", cartDto);
         return this.orderRepository.save(
                 new Order(
                         BigDecimal.ZERO,
@@ -66,7 +66,7 @@ public class OrderService {
                         null,
                         null,
                         Collections.emptySet(),
-                        cart
+                        cartDto.id()
                 )
         );
     }

@@ -23,9 +23,7 @@ public class Cart extends BaseEntity {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Order order;
+    private Long orderId;
 
     @ManyToOne
     private Customer customer;

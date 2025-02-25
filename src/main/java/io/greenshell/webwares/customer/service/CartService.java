@@ -24,7 +24,6 @@ public class CartService {
 
     private final CartRepository cartRepository;
     private final CustomerRepository customerRepository;
-    private final OrderService orderService;
 
     public List<CartDto> findAll() {
         log.debug("Request to get all Carts");
@@ -50,8 +49,7 @@ public class CartService {
                     customer,
                     CartStatus.NEW
             );
-            Order order = this.orderService.create(cart);
-            cart.setOrder(order);
+            cart.setOrderId(cart.getOrderId());
             return mapToDto(this.cartRepository.save(cart));
         } else {
             throw new IllegalStateException("There is already an active cart");
@@ -90,7 +88,7 @@ public class CartService {
         if (cart != null) {
             return new CartDto(
                     cart.getId(),
-                    cart.getOrder().getId(),
+                    cart.getOrderId(),
                     CustomerService.mapToDto(cart.getCustomer()),
                     cart.getStatus().name()
             );

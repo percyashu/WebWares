@@ -24,8 +24,8 @@ public class OrderItem extends BaseEntity {
     @Column(name = "quantity", nullable = false)
     private Long quantity;
 
-    @ManyToOne
-    private Product product;
+    private Long productId;
+
     @ManyToOne
     private Order order;
 }

@@ -4,8 +4,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:15432/web_wares
-    username: seoeunhyun
-    password: soap101
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:15432/web_wares
+#    username: seoeunhyun
+#    password: soap101
