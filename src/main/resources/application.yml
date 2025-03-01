@@ -1,6 +1,6 @@
 spring:
   application:
-    name: WebWares
+    name: web-wares
   jpa:
     hibernate:
       ddl-auto: create
